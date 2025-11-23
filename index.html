@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EYAETATTLTK</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="preloader">
+        <div id="preloader-content">
+            <h1>CLICK ĐỂ BẮT ĐẦU</h1>
+            <p>Để đảm bảo âm thanh và hiệu ứng hoạt động chính xác, vui lòng tương tác.</p>
+        </div>
+    </div>
+
+    <audio id="heartbeatMusic" src="tim.mp3" preload="auto" loop></audio>
+    <audio id="errorAlarmMusic" src="lỗi.mp3" preload="auto" loop></audio>
+    <audio id="calmPianoMusic" src="150.mp3" preload="auto" loop></audio>
+    <audio id="birthdaySong" src="birthday.mp3" preload="auto" loop></audio>
+    <audio id="typingSound" src="bàn phím.mp3" preload="auto" loop></audio>
+
+    <div id="container">
+
+        <div id="initialPrompt" class="prompt-box">
+            <h2 id="initialMessage"></h2>
+            <div id="initialOptions" class="options hidden">
+                <button id="yesButton">TIẾP TỤC</button>
+                <button id="stopButton">DỪNG LẠI</button>
+            </div>
+        </div>
+
+        <div id="readyPrompt" class="prompt-box hidden">
+            <h2 id="readyMessage"></h2>
+            <div id="readyOptions" class="options hidden">
+                <button id="continueButton">YES</button>
+                <button id="noButton">NO</button>
+            </div>
+        </div>
+
+        <div id="fullScreenMessage" class="full-screen-message hidden">
+            <h1 id="fsTitle"></h1>
+        </div>
+
+        <div id="messageChainContainer" class="hidden">
+            </div>
+
+        <div id="largeErrorAlert" class="error-alert-full hidden">
+            <div class="alert-content">
+                <span id="errorText">CẢNH BÁO LỖI HỆ THỐNG</span>
+                <p>Mã lỗi 404: Tình yêu vượt mức giới hạn.</p>
+                <p>Đang tiến hành xử lý...</p>
+            </div>
+        </div>
+
+        <div id="imageSlideContainer" class="image-slide-container hidden">
+            </div>
+
+        <div id="finalQuoteContainer" class="final-quote-container hidden">
+            <p id="finalQuoteText"></p>
+        </div>
+        
+        <div id="iLoveYouFinal" class="i-love-you-final hidden">
+            <h1>EM YÊU ANH RẤT NHIỀU!</h1>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

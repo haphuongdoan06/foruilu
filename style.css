@@ -1,0 +1,257 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+#container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+/* ------------------- PRELOADER ------------------- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+}
+#preloader-content {
+    text-align: center;
+    animation: pulse-preloader 1.5s infinite;
+}
+@keyframes pulse-preloader {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ------------------- PROMPT BOXES (Pha 0, 1) ------------------- */
+.prompt-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(44, 44, 44, 0.95);
+    border: 3px solid #ff4d4d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.7);
+    z-index: 100;
+    transition: all 0.3s ease-out;
+    width: 300px;
+    text-align: center;
+}
+
+.prompt-box h2 {
+    margin-top: 0;
+    color: #ffcccc;
+}
+
+.options button {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.options button:hover {
+    background: #e63939;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ------------------- FULL SCREEN MESSAGE (Pha 2) ------------------- */
+.full-screen-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 150;
+    text-align: center;
+}
+
+.full-screen-message h1 {
+    font-size: 3em;
+    color: #ffcccc;
+    white-space: pre-wrap;
+    overflow: hidden;
+    margin: 0;
+}
+
+.typing::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* ------------------- MESSAGE BUBBLES (Pha 3) ------------------- */
+#messageChainContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.message-bubble {
+    position: absolute;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    opacity: 0; /* Khởi tạo ẩn */
+    transition: opacity 0.5s ease-out;
+    pointer-events: auto;
+}
+
+/* Color codes */
+.color-1 { background-color: #ff6f69; color: black; } /* Coraly */
+.color-2 { background-color: #ffcc5c; color: black; } /* Goldish */
+.color-3 { background-color: #88d8b0; color: black; } /* Minty */
+.color-4 { background-color: #ff99ff; color: black; } /* Pinky */
+.color-5 { background-color: #66b2ff; color: white; } /* Light Blue */
+.color-6 { background-color: #c06c84; color: white; } /* Dusty Rose */
+.color-7 { background-color: #f67280; color: black; } /* Salmon Pink */
+.color-8 { background-color: #355c7d; color: white; } /* Dark Blue */
+.color-9 { background-color: #92a8d1; color: black; } /* Periwinkle */
+.color-10 { background-color: #ff9d7d; color: black; } /* Peach */
+
+/* ------------------- LARGE ERROR ALERT (Pha 4) ------------------- */
+.error-alert-full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(179, 0, 0, 0.85); /* Đỏ sậm */
+    z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: alert-flash 0.5s infinite alternate;
+}
+
+.error-alert-full .alert-content {
+    color: white;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.error-alert-full .alert-content p {
+    font-size: 0.5em;
+    opacity: 0.8;
+}
+
+@keyframes alert-flash {
+    from { box-shadow: 0 0 50px rgba(255, 0, 0, 1); }
+    to { box-shadow: 0 0 70px rgba(255, 100, 100, 0.8); }
+}
+
+/* ------------------- IMAGE SLIDE (Pha 6) ------------------- */
+.image-slide-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 550;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fade-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: opacity 0.5s ease;
+}
+
+/* ------------------- FINAL QUOTE (Pha 7) ------------------- */
+.final-quote-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5%;
+    z-index: 600;
+}
+
+#finalQuoteText {
+    font-size: 2.5em;
+    color: #ffc0cb; /* Hồng dễ thương */
+    white-space: pre-wrap;
+    overflow: hidden;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ------------------- FINAL I LOVE YOU (Pha 8) ------------------- */
+.i-love-you-final {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffc0cb, #ff6f69);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 700;
+}
+
+.i-love-you-final h1 {
+    font-size: 6em;
+    color: white;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: scale-up 2s ease-out infinite alternate;
+}
+
+@keyframes scale-up {
+    from { transform: scale(0.95); }
+    to { transform: scale(1.05); }
+}
